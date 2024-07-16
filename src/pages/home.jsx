@@ -1,5 +1,5 @@
 // import Aboutus from "./components/Aboutus"
-import Dignitories from "../components/home/Dignitories"
+import Dignitaries from "../components/home/Dignitaries"
 import Events from "../components/home/Events"
 import Footer from "./../components/Footer"
 import HeroSection from "../components/home/HeroSection"
@@ -16,7 +16,7 @@ function Home() {
       <Navbar/>
       <HeroSection/>
       <Events/>
-      <Dignitories/>
+      <Dignitaries/>
       <Linksections/>
       <Overlap/>
       <Footer/>

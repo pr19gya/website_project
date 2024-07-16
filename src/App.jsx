@@ -13,7 +13,7 @@ function App() {
  
 
   return (
-    <>
+    <div className="font-f_3">
       <Routes>
         <Route path="/" element ={<Home/>}/>
         <Route path="/about" element={<About/>}/>
@@ -25,7 +25,7 @@ function App() {
 
 
       </Routes>
-    </>
+    </div>
   )
 }
 
