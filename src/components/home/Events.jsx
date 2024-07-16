@@ -12,35 +12,35 @@ function Events() {
     autoplay: true,
     autoplaySpeed: 2000,
     centerMode: true,
-    centerPadding: '10px',
+    centerPadding: '5px',
     responsive: [
       {
         breakpoint: 1024,
         settings: {
           slidesToShow: 2,
-          centerPadding: '50px',
+          centerPadding: '5px',
         }
       },
       {
         breakpoint: 768,
         settings: {
           slidesToShow: 1,
-          centerPadding: '50px',
+          centerPadding: '5px',
         }
       }
     ]
   };
 
   return (
-    <div className='w-full m-auto my-20 px-4 pb-8'>
+    <div className='w-full h-[40rem] m-auto my-20 px-4 pb-8'>
       <div className='text-3xl sm:text-4xl font-semibold font-f_3 flex justify-center items-center'>Latest Events</div>
-      <div className="text-xl sm:text-xl font-f_3 flex justify-center mt-5 items-center">Check out the latest events happening in your community.</div>
-      <div className='w-full lg:w-3/4 m-auto'>
+      <div className="text-xl sm:text-xl font-f_3 flex justify-center mt-5 text-center items-center">Check out the latest events happening in your community.</div>
+      <div className='w-full lg:w-4/5 m-auto'>
         <div className="mt-20">
           <Slider {...settings}>
             {data.map((d) => (
-              <div key={d.name} className="bg-white h-[450px] px-5 text-black rounded-xl">
-                <div className='h-56 rounded-lg flex justify-center items-center'>
+              <div key={d.name} className="bg-white h-[450px]  px-5  text-black rounded-xl shadow-2xl">
+                <div className='h-56  rounded-lg flex justify-center items-center'>
                   <img src={d.img} alt={d.name} className="rounded-t-lg object-cover h-full w-full" />
                 </div>
                 <div className="flex flex-col items-center justify-center gap-4 p-4">
