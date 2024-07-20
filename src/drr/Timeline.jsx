@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
+
 const Timeline = () => {
   const drrs = [
     { name: "Rtr. Vikram Chawla", year: "1984-1985" },
@@ -47,7 +48,7 @@ const Timeline = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-purple-500 to-[#E0218A] py-6 flex flex-col justify-center sm:py-12">
+    <div className="min-h-screen bg-[#E0218A] py-6 flex flex-col justify-center sm:py-12">
       <div className="py-3 sm:max-w-xl sm:mx-auto w-full px-2 sm:px-0">
         <div className="relative text-gray-700 antialiased text-sm font-semibold">
           {/* Vertical bar running through middle */}
@@ -63,14 +64,21 @@ const Timeline = () => {
             >
               <div className="flex flex-col sm:flex-row items-center">
                 <div className={`flex justify-${index % 2 === 0 ? 'start' : 'end'} w-full mx-auto items-center`}>
-                  <div className={`w-full sm:w-1/2 sm:${index % 2 === 0 ? 'pr-8 ' : 'pl-8'}`}>
-                    <div className="p-6 bg-white rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300">
-                      <h3 className="text-lg font-bold">{item.name}</h3>
-                      {/* <p className="text-sm">{item.year}</p> */}
-                    </div>
+                  <div className={`w-full sm:w-1/2 sm:${index % 2 === 0 ? 'pr-8' : 'pl-8'}`}>
+                    <motion.div 
+                      whileHover={{ scale: 1.05 }}
+                      className="p-4 bg-white rounded shadow"
+                    >
+                      {item.name}
+                    </motion.div>
                   </div>
                 </div>
-                <div className="bg-black text-white border-white border-2 w-[4.5rem] h-8 sm:h-10 absolute left-1/2 -translate-y-4 sm:translate-y-0 transform -translate-x-1/2 flex items-center justify-center">{item.year}</div>
+                <motion.div 
+                  className="bg-black border-white text-white border-2 w-20 h-8 sm:h-10 absolute left-1/2 -translate-y-4 sm:translate-y-0 transform -translate-x-1/2 flex items-center justify-center"
+                  whileHover={{ scale: 1.1 }}
+                >
+                  {item.year}
+                </motion.div>
               </div>
             </motion.div>
           ))}

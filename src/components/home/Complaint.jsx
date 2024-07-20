@@ -9,29 +9,36 @@ const Label = ({ htmlFor, children }) => (
 );
 
 // Input Component
-const Input = ({ id, type = 'text', placeholder, className }) => (
+const Input = ({ id, type = 'text', placeholder, className, value, onChange }) => (
   <input
     id={id}
+    name={id}
     type={type}
     placeholder={placeholder}
+    value={value}
+    onChange={onChange}
     className={`mt-1 block w-full px-3 py-2 border border-gray-700 rounded-md shadow-sm placeholder-gray-500 bg-gray-800 text-white focus:outline-none focus:ring-[#E0218A] focus:border-[#E0218A] sm:text-sm ${className}`}
   />
 );
 
 // Textarea Component
-const Textarea = ({ id, placeholder, className }) => (
+const Textarea = ({ id, placeholder, className, value, onChange }) => (
   <textarea
     id={id}
+    name={id}
     placeholder={placeholder}
+    value={value}
+    onChange={onChange}
     className={`mt-1 block w-full px-3 py-2 border border-gray-700 rounded-md shadow-sm placeholder-gray-500 bg-gray-800 text-white focus:outline-none focus:ring-[#E0218A] focus:border-[#E0218A] sm:text-sm ${className}`}
   />
 );
 
 // Button Component
-const Button = ({ type, children, className }) => (
+const Button = ({ type, children, className, disabled }) => (
   <button
     type={type}
     className={`inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-[#E0218A] hover:bg-white hover:text-black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#E0218A] ${className}`}
+    disabled={disabled}
   >
     {children}
   </button>
@@ -47,32 +54,40 @@ export default function Complaint() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [responseMessage, setResponseMessage] = useState('');
 
+  const handleChange = (e) => {
+    const { id, value } = e.target;
+    setFormData((prevState) => ({
+      ...prevState,
+      [id]: value
+    }));
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     setIsSubmitting(true);
     setResponseMessage("Sending....");
 
-    let KEY = 'fd755998-5a7e-4f7e-988d-742155f34fb9'
-  
-    const formData = new FormData(event.target);
-  
-    // Append API key and any other necessary data
-    formData.append("access_key", KEY);
-    formData.append("name", formData.get("name"));
-    formData.append("email", formData.get("email"));
-    formData.append("complaint", formData.get("complaint"));
-  
+    const formDataObj = new FormData();
+    formDataObj.append("access_key", "fd755998-5a7e-4f7e-988d-742155f34fb9");
+    formDataObj.append("name", formData.name);
+    formDataObj.append("email", formData.email);
+    formDataObj.append("complaint", formData.complaint);
+
     try {
       const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        body: formData
+        body: formDataObj
       });
-  
+
       const data = await response.json();
-  
+
       if (data.success) {
         setResponseMessage("Form Submitted Successfully");
-        event.target.reset();
+        setFormData({
+          name: '',
+          email: '',
+          complaint: ''
+        });
       } else {
         console.error("Error", data);
         setResponseMessage(data.message || 'Failed to submit form. Please try again.');
@@ -84,7 +99,6 @@ export default function Complaint() {
       setIsSubmitting(false);
     }
   };
-  
 
   return (
     <section className="w-full bg-black py-12 md:py-16 lg:py-20">
@@ -109,20 +123,24 @@ export default function Complaint() {
         </div>
         <div className="w-full md:w-1/2">
           <motion.form
+            action="https://api.web3forms.com/submit"
+            method="POST"
             onSubmit={handleSubmit}
             className="space-y-4 bg-gray-900 p-8 rounded-lg shadow-lg"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
+            <input type="hidden" name="access_key" value="fd755998-5a7e-4f7e-988d-742155f34fb9" />
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6">
               <div className="space-y-2">
                 <Label htmlFor="name">Name</Label>
                 <Input
                   id="name"
                   name="name"
+                  type="text"
                   value={formData.name}
-                //   onChange={handleChange}
+                  onChange={handleChange}
                   placeholder="Enter your name"
                 />
               </div>
@@ -133,7 +151,7 @@ export default function Complaint() {
                   name="email"
                   type="email"
                   value={formData.email}
-                //   onChange={handleChange}
+                  onChange={handleChange}
                   placeholder="Enter your email"
                 />
               </div>
@@ -144,7 +162,7 @@ export default function Complaint() {
                 id="complaint"
                 name="complaint"
                 value={formData.complaint}
-                // onChange={handleChange}
+                onChange={handleChange}
                 placeholder="Describe your complaint in detail"
                 className="min-h-[150px]"
               />
