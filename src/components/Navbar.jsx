@@ -37,10 +37,10 @@ const Navbar = () => {
   };
 
   return (
-    <div className="h-[5rem] flex w-full shadow-2xl top-0 justify-between items-center bg-white px-5 md:px-10">
+    <div className="h-[5rem] flex w-full shadow-2xl top-0 justify-between items-center bg-white sm:px-5 px-2 md:px-10">
       <Link to="/">
         <div className="h-full flex items-center">
-          <img src="/Screenshot 2024-07-14 190646.png" alt="Logo" className="h-15 w-auto" />
+          <img src="/Screenshot 2024-07-20 104057.png" alt="Logo" className="md:h-[4.5rem] h-[3rem]  w-auto" />
         </div>
       </Link>
       <div className="flex items-center space-x-6 lg:space-x-10 hidden md:flex">

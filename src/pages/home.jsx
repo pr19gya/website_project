@@ -6,6 +6,8 @@ import HeroSection from "../components/home/HeroSection"
 import Linksections from "../components/home/Linksections"
 import Navbar from "./../components/Navbar"
 import Overlap from "../components/home/Overlap"
+import Notifications from "../components/home/Notifications"
+import Complaint from "../components/home/Complaint"
 
 
 function Home() {
@@ -19,6 +21,8 @@ function Home() {
       <Dignitaries/>
       <Linksections/>
       <Overlap/>
+      <Notifications/>
+      <Complaint/>
       <Footer/>
     </>
   )

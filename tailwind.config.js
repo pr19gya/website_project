@@ -5,7 +5,11 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      animation: {
+        "spin-slow" : "spin 3s linear infinite"
+      }
+    },
   },
   fontFamily:{
     f_1:["Merriweather", "serif"],
