@@ -7,6 +7,7 @@ import Drr from "./pages/Drr"
 import Projects from "./pages/Projects"
 import SignIn from "./pages/SignIn"
 import Calender from "./pages/Calender"
+import ClubFinder from "./pages/ClubFinder"
 
 
 function App() {
@@ -22,6 +23,8 @@ function App() {
         <Route path="/club-project" element={<Projects/>}/>
         {/* <Route path="/sign-in" element={<SignIn/>}/> */}
         <Route path="/calendar" element={<Calender/>}/>
+        <Route path="/all-clubs" element={<ClubFinder/>}/>
+
 
 
       </Routes>

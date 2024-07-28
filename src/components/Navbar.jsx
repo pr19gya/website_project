@@ -60,6 +60,10 @@ const Navbar = () => {
               </Link>
               <Link to="/past-drrs">
                 <p className="flex justify-center items-center my-2">Past DRRs</p>
+                <hr/>
+              </Link>
+              <Link to="/all-clubs">
+                <p className="flex justify-center items-center my-2">Clubs</p>
               </Link>
             </div>
           )}

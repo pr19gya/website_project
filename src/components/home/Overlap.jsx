@@ -25,7 +25,7 @@ const Overlap = () => {
             animate={leftInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 1 }}
           >
-            <img src="/miquel-parera-VGmgsDsck58-unsplash.jpg" className="w-full h-72 object-cover lg:h-auto lg:w-auto" alt="Team" />
+            <img src="/home_page_image.jpg" className="w-full h-72 object-cover lg:h-full lg:w-auto" alt="Team" />
             <div className="absolute inset-0 bg-[#E0218A] bg-opacity-40 flex flex-col justify-center items-center">
               <div className="text-4xl lg:text-6xl font-bold mb-4 text-center">Our Team</div>
               <p className="text-lg lg:text-xl text-center px-4">Meet the District Council of Rotaract District 3080—dedicated leaders committed to guiding our initiatives, supporting clubs, and enhancing community engagement.</p>
@@ -43,7 +43,7 @@ const Overlap = () => {
             animate={rightInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 1 }}
           >
-            <img src="/miquel-parera-VGmgsDsck58-unsplash.jpg" className="w-full h-72 object-cover lg:h-auto lg:w-auto" alt="Know Us" />
+            <img src="/image_4.webp" className="w-full h-72 object-cover lg:h-full lg:w-auto" alt="Know Us" />
             <div className="absolute inset-0 bg-[#E0218A] bg-opacity-40 flex flex-col justify-center items-center">
               <div className="text-4xl lg:text-6xl font-bold mb-4 text-center">Know Us</div>
               <p className="text-lg lg:text-xl text-center px-4">We empower youth to develop leadership skills, foster responsible citizenship, and engage in meaningful service initiatives.</p>
